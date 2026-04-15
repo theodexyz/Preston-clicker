@@ -18,7 +18,7 @@ const powerDisplay = document.getElementById('inc-display');
 
 const prestonStart = 8;
 const prestonEnd = 11;
-const soundStart = 3;
+const soundStart = 73;
 
 startWall.addEventListener('click', () => {
     startWall.style.display = 'none';

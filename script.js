@@ -104,13 +104,23 @@ function buyAuto2() {
 
 secretBox.addEventListener('input', () => {
     const value = secretBox.value.toUpperCase();
+
     if (!auraUsed && (value === 'TOM' || value === 'AURA')) {
         auraUsed = true;
+
+        backgroundNoise.volume = 0;
+        thePreston.muted = true;
+
         auraScreen.style.display = 'flex';
+
         auraAudio.currentTime = 7;
+        auraAudio.volume = 1.0;
         auraAudio.play().catch(e => console.error(e));
+
         auraAudio.onended = () => {
             auraScreen.style.display = 'none';
+            backgroundNoise.volume = 0.75;
+            thePreston.muted = false;
         };
     }
 });

@@ -15,6 +15,11 @@ const drainWalletBtn = document.getElementById('upgrade-btn');
 const startWall = document.getElementById('overlay');
 const painDisplay = document.getElementById('price-display');
 const powerDisplay = document.getElementById('inc-display');
+const secretBox = document.getElementById('secret-box');
+const auraAudio = document.getElementById('aura-audio');
+const auraScreen = document.getElementById('aura-screen');
+
+let auraUsed = false;
 
 const prestonStart = 8;
 const prestonEnd = 11;
@@ -96,3 +101,16 @@ function buyAuto2() {
         }, 1000);
     }
 }
+
+secretBox.addEventListener('input', () => {
+    const value = secretBox.value.toUpperCase();
+    if (!auraUsed && (value === 'TOM' || value === 'AURA')) {
+        auraUsed = true;
+        auraScreen.style.display = 'flex';
+        auraAudio.currentTime = 7;
+        auraAudio.play().catch(e => console.error(e));
+        auraAudio.onended = () => {
+            auraScreen.style.display = 'none';
+        };
+    }
+});
